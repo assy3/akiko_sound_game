@@ -8,12 +8,14 @@ class Box {
  }
  void killBody() {
  box2d.destroyBody(body);
+ sum += 100; //得点追加
  }
  boolean done() {
  Vec2 pos = box2d.getBodyPixelCoord(body);
  //pos.y is the box current positon
  if (pos.y > height + box_w + box_h) {
  killBody();
+ 
  return true;
  }
  return false;

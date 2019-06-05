@@ -27,6 +27,7 @@ Table a;
 float []btime;
 int []btype;
 int index = 0;
+int sum = 0;
 float my_timer;
 
 
@@ -36,8 +37,8 @@ void setup()
  setup_music();
  read_beat_data();
  setup_image();
-
- textFont(createFont("Helvetica", 16));
+ setup_my_sound();
+ //textFont(createFont("Helvetica", 16));
  textAlign(CENTER);
  setup_game();
  setup_hikaru_particles();
@@ -68,7 +69,8 @@ void draw()
  box2d.step();
 
 ///////////////
-image(src, 0, 100, 2*src.width/3, 2*src.height/3);
+// src = opencv.getSnapshot();
+//image(src, 0, 100, 2*src.width/3, 2*src.height/3);
 ///////////////
 
 if(hikaru_able == 1 && my_timer - hikaru_timer < 0.5)
@@ -83,24 +85,28 @@ else
 
  if(state == -1)
  {
- text("Press p-key to start a game!", width/2, height/2);
+   text("Press p-key to start a game!", width/2, height/2);
  }
- else if(state == 3)
- { //play game
- if(abs(my_timer - falling_time - btime[index]) < 0.01)
+ else if(state == 1)
+ { 
+   //play game
+   draw_my_game();
+   if(abs(my_timer - falling_time - btime[index]) < 0.01)
+   {
+   add_box(btype[index]);
+   index++;
+   }
+   if (index >= a.getRowCount() ) index = 0;
+   text(my_timer, width/2, 20);
+   my_timer = my_timer + 1.0 /60.0;
+ }
+ else if(state == 2)
  {
- add_box(btype[index]);
- index++;
- }
-
- if (index >= a.getRowCount() ) index = 0;
-
- draw_my_game();
-
- text(my_timer, width/2, 20);
- my_timer = my_timer + 1.0/60.0;
+    //background(128);
+    text("The point you get⇒"+sum, width/2, height/2);   
  }
 }
+
 void draw_my_game() {
  // Display all the boundaries
  for (Boundary wall: boundaries) {

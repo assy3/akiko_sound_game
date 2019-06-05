@@ -1,6 +1,5 @@
 import ddf.minim.*;
 import ddf.minim.analysis.*;
-Minim minim;
 AudioPlayer song;
 BeatDetect beat;
 float bww;
