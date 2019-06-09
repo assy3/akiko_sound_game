@@ -23,6 +23,7 @@ class Box {
  boolean compare() {
  Vec2 pos = box2d.getBodyPixelCoord(body);
  //pos.y is the box current positon
+ // abs(pos.x / 2) < box_w &&
  if (abs(pos.y - goal_y) < box_h/2.0 + box_h && keyPressed && key == ' ')
  {
  fill(255);
