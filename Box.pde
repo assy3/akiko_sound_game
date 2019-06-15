@@ -1,4 +1,5 @@
 float ts;
+
 class Box {
  Body body;
  // Constructor
@@ -24,14 +25,30 @@ class Box {
  Vec2 pos = box2d.getBodyPixelCoord(body);
  //pos.y is the box current positon
  // abs(pos.x / 2) < box_w &&
- if (abs(pos.y - goal_y) < box_h/2.0 + box_h && keyPressed && key == ' ')
+ if (abs(pos.y - goal_y) < box_h/2.0 + box_h && 0 < pos.x && pos.x < 180 && keyPressed && key == 'b')
  {
- fill(255);
- ts = 16;
- textSize(ts);
- text("GREAT", pos.x, pos.y - box_h);
- killBody();
- return true;
+   fill(255);
+   ts = 20;
+   textSize(ts);
+   text("GREAT", pos.x, pos.y - box_h);
+   killBody();
+   return true;
+ }else if(abs(pos.y - goal_y) < box_h/2.0 + box_h && 180 < pos.x && pos.x < 360 && keyPressed && key == 'n')
+ {
+   fill(255);
+   ts = 20;
+   textSize(ts);
+   text("GREAT", pos.x, pos.y - box_h);
+   killBody();
+   return true;
+ }else if(abs(pos.y - goal_y) < box_h/2.0 + box_h && 360 < pos.x && pos.x < 480 && keyPressed && key == 'm')
+ {
+   fill(255);
+   ts = 20;
+   textSize(ts);
+   text("GREAT", pos.x, pos.y - box_h);
+   killBody();
+   return true;
  }
  return false;
  }
