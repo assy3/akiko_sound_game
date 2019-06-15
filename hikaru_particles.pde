@@ -1,4 +1,3 @@
-
 final int MAX_PARTICLE = 30;  //  パーティクルの個数
 hikaru_Particle[] hikaru_p = new hikaru_Particle[MAX_PARTICLE];
  
@@ -117,7 +116,6 @@ void draw_hikaru_particles()
 }
  
  
- 
 //  マウスクリック時に、各パーティクルをランダムな方向に飛ばす
 void mousePressed()
 {
@@ -183,7 +181,6 @@ class hikaru_Particle {
  
   //  移動
   void move(float targetX, float targetY) {
-    
     /*
  
     //  ターゲットに向かって動こうとする

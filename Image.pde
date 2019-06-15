@@ -1,6 +1,7 @@
 import gab.opencv.*;
 import processing.video.*;
 PImage src;
+PImage src2;
 OpenCV opencv;
 Capture video;
 
@@ -21,7 +22,9 @@ void draw_image_processing()
  // Load the new frame of our camera in to OpenCV
  opencv.loadImage(video);
  opencv.useColor();
-
+  
+ //src2 = opencv.loadImage("otoshiana.png");
+ 
  if(keyPressed)
  {
  src = opencv.getSnapshot();

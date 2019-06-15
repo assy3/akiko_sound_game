@@ -9,6 +9,19 @@ class Box {
  }
  void killBody() {
  box2d.destroyBody(body);
+   // 追加したところ
+   Vec2 pos = box2d.getBodyPixelCoord(body);
+    hikaru_able = 1;
+    hikaru_timer = my_timer;
+    old_mouseX = pos.x;
+    old_mouseY = pos.y;
+    for (int pid = 0; pid < MAX_PARTICLE; pid++) {
+      hikaru_p[pid].explode();
+    }
+    int k = mouse_click_count % 7; 
+    play_effect_sound(k); 
+    mouse_click_count++;
+ 
  sum += 100; //得点追加
  }
  boolean done() {
